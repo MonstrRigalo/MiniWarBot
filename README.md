@@ -2,103 +2,203 @@
 
 An auto-buyer for a Roblox tycoon shop. It watches the game window for the green
 **"Shop has been restocked!"** banner, then opens the shop, reads each category with OCR,
-and buys the items you picked in `config.json`.
+and buys the items you selected in the launcher.
 
 Pure computer-vision automation: it only **screen-captures the Roblox window**, reads it with
-OCR, and sends normal mouse/keyboard input — like an autoclicker. It does not inject into the
-game, read game memory, or modify any game files.
+OCR, and sends normal mouse/keyboard input — like an autoclicker. It does **not** inject into
+the game, read game memory, or modify any game files.
+
+---
+
+## Features
+
+- Automatic restock detection
+- OCR-based item recognition
+- Easy-to-use GUI launcher
+- Dry Run mode for safe testing
+- Automatic scrolling through all shop categories
+- Resolution-independent coordinate system
+- No memory reading or code injection
+
+---
 
 ## How it works
 
-1. Watches a small region of the screen for the restock banner (green-pixel check + OCR confirm).
-2. On restock: presses **E** to open the shop, then walks the Factory / Houses / Military tabs.
-3. Scrolls each list, OCR-reads the item names + rarity + stock, and clicks **Buy** on the ones
-   you selected.
-4. Returns to the map and goes back to watching.
+1. Watches a small region of the screen for the green **"Shop has been restocked!"** banner.
+2. Confirms the banner using OCR.
+3. Presses **E** to open the shop.
+4. Walks through the Factory, Houses and Military tabs.
+5. Scrolls each category and OCR-reads the item names, rarity and stock.
+6. Buys the items you selected.
+7. Closes the shop and waits for the next restock.
 
-## Requirements
+---
 
-- Windows 10/11
+# Requirements
+
+- Windows 10 or Windows 11
 - Python 3.12
-- The Roblox game running in a window (not fullscreen-exclusive)
+- Roblox running in **Windowed** or **Borderless Windowed** mode
 
-## Install
+---
+
+# Installation (For Beginners)
+
+## 1. Install Python
+
+Download **Python 3.12** from the official website:
+
+https://www.python.org/downloads/
+
+During installation **make sure** to enable:
+
+✅ **Add Python to PATH**
+
+Then click **Install Now**.
+
+---
+
+## 2. Download the project
+
+Download this repository as a ZIP from GitHub and extract it anywhere.
+
+Example:
+
+```
+C:\Users\YourName\Downloads\roblox-shop-restock-bot
+```
+
+---
+
+## 3. Open Command Prompt
+
+Open the project folder.
+
+Click the address bar in File Explorer.
+
+Type:
+
+```text
+cmd
+```
+
+Press **Enter**.
+
+A Command Prompt will open inside the project folder.
+
+---
+
+## 4. Install dependencies
+
+Run:
 
 ```bat
 python -m pip install -r requirements.txt
 ```
 
-The OCR model (`en/PP-OCRv5`) downloads automatically on first run (needs internet once).
+The installation may take a few minutes.
 
-## Configure
+The OCR model (`PP-OCRv5`) is downloaded automatically the first time you run the bot (internet required once).
 
-Edit **`config.json`**:
+---
 
-- `buy.items` — the item names to buy, per category. Names must match the in-game text.
-- `buy.dry_run` — set to `true` to only **log** what it would buy (safe for a first test); set
-  to `false` to actually buy.
-- `buy.max_per_item` — `0` buys the whole stock; a number caps it.
-- `navigation.categories` — which tabs to scan.
+## 5. Launch the bot
 
-All button/region coordinates are **fractions** of the Roblox window, so they survive most
-window sizes. If the game UI moved or your layout differs, re-calibrate:
+Simply double-click:
 
-```bat
-python tools/calibrate.py
+```
+launcher.bat
 ```
 
-(Hover the targets in-game and press the on-screen hotkeys; it writes the coords back to
-`config.json`.)
-
-## Run
-
-Open Roblox, stand next to the shop vendor, then:
-
-```bat
-python run.py
-```
-
-It prints what it sees and buys. Press **Ctrl+C** to stop.
-
-### Launcher (GUI, optional)
-
-There is also a small GUI to pick the items to buy, toggle test mode, and start/stop the bot:
+or run:
 
 ```bat
 python tools/launcher.py
 ```
 
-(or double-click `launcher.bat`). While the bot runs, the window shrinks to a small
-always-on-top status overlay in the top-right corner; **F7** stops the bot from anywhere.
-The launcher just edits `config.json` and spawns `run.py` — it's optional.
+The launcher lets you:
 
-## Project layout
+- Select which items to buy
+- Enable or disable **Dry Run** (test mode)
+- Start and stop the bot
+
+All settings are saved automatically.
+
+---
+
+# In-Game Settings (Important)
+
+Before running the bot, join **MiniWar** and open the **⚙️ Settings** menu in the top-right corner.
+
+Recommended settings:
+
+- ✅ Enable **Low Performance**
+- ✅ Disable **Alliances**
+
+These settings reduce UI clutter and improve OCR accuracy.
+
+---
+
+# Running
+
+1. Join **MiniWar**.
+2. Stand next to the shop NPC.
+3. Open **launcher.bat**.
+4. Select the items you want to buy.
+5. Click **Start Bot**.
+
+The bot will automatically wait for the next shop restock.
+
+Press **F7** at any time to stop the bot.
+
+---
+
+# Calibration (Optional)
+
+If a game update changes the UI and buttons no longer line up correctly, run:
+
+```bat
+python tools/calibrate.py
+```
+
+Follow the on-screen instructions to recalibrate the coordinates.
+
+---
+
+# Project Layout
 
 ```
-run.py              entry point
-config.json         all settings (coords, timings, catalog, what to buy)
+run.py              Entry point
+config.json         Saved settings
+
 src/
-  watcher.py        main loop: detect restock -> check -> buy
-  navigator.py      opens the shop, scrolls, reads + buys
-  vision.py         OCR + green-banner / buy-button detection
-  parser.py         turns OCR lines into {name, rarity, stock}
-  capture.py        mss screen capture (self-healing)
-  window.py         locates the Roblox window, fraction<->pixel mapping
-  input_control.py  mouse / keyboard via Win32 SendInput
-  botstatus.py      writes a small status.json (read by the launcher overlay)
+  watcher.py        Restock detection loop
+  navigator.py      Shop navigation
+  vision.py         OCR and image detection
+  parser.py         OCR text parser
+  capture.py        Screen capture
+  window.py         Roblox window detection
+  input_control.py  Mouse & keyboard input
+  botstatus.py      Launcher status information
+
 tools/
-  launcher.py       GUI: item selection, test mode, Run/Stop + status overlay
-  calibrate.py      interactive coordinate calibration
-launcher.bat        double-click shortcut for the GUI
+  launcher.py       GUI launcher
+  calibrate.py      Interactive coordinate calibration
+
+launcher.bat        Launcher shortcut
 ```
 
-## Notes
+---
 
-- This is game automation. Automating a game may violate its Terms of Service — use it at your
-  own risk, on your own account. Provided as-is, for educational purposes.
-- Nothing here talks to any external server except the one-time OCR-model download by the
-  `rapidocr` library.
+# Notes
 
-## License
+- This project is intended for educational purposes.
+- Automating a game may violate its Terms of Service.
+- Use it at your own risk and only on your own account.
+- The only internet connection made by the bot is the one-time download of the OCR model on first launch.
 
-MIT — see `LICENSE`.
+---
+
+# License
+
+MIT License — see `LICENSE`.
