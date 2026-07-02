@@ -195,9 +195,6 @@ launcher.bat        Launcher shortcut
 
 # Notes
 
-- This project is intended for educational purposes.
-- Automating a game may violate its Terms of Service.
-- Use it at your own risk and only on your own account.
 - The only internet connection made by the bot is the one-time download of the OCR model on first launch.
 
 ---
