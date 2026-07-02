@@ -1,6 +1,6 @@
 # Roblox Shop Restock Bot
 
-An auto-buyer for a Roblox tycoon shop. It watches the game window for the green
+An auto-buyer for a Roblox MiniWar shop. It watches the game window for the green
 **"Shop has been restocked!"** banner, then opens the shop, reads each category with OCR,
 and buys the items you selected in the launcher.
 
