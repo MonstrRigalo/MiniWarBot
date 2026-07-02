@@ -1,0 +1,171 @@
+{
+  "window": {
+    "title_contains": "Roblox",
+    "class_name": "WINDOWSCLIENT"
+  },
+  "_comment_coords": "Button coords [fx,fy] and regions [fx,fy,fw,fh] are FRACTIONS (0..1) of the Roblox window client area. Re-calibrate with: python tools/calibrate.py",
+  "buttons": {
+    "buy": [0.3359, 0.0606],
+    "tab_factory": [0.3234, 0.3156],
+    "tab_houses": [0.4477, 0.3156],
+    "tab_military": [0.5699, 0.317],
+    "tab_special": [0.6883, 0.3156],
+    "close_x": [0.7234, 0.2148],
+    "country": [0.5027, 0.0606]
+  },
+  "regions": {
+    "refill_banner": [0.3, 0.15, 0.4, 0.2],
+    "shop_window": [0.2523, 0.168, 0.4984, 0.6523],
+    "item_list": [0.2547, 0.3652, 0.4875, 0.4536]
+  },
+  "colors": {
+    "refill_green_hsv_low": [40, 200, 200],
+    "refill_green_hsv_high": [80, 255, 255],
+    "refill_min_pixels": 300,
+    "refill_max_fraction": 0.7
+  },
+  "timings": {
+    "watch_interval_sec": 0.5,
+    "after_tab_sec": 1.0,
+    "cooldown_after_check_sec": 30,
+    "e_press_hold_sec": 0.9,
+    "banner_confirm_interval_sec": 1.5
+  },
+  "navigation": {
+    "categories": ["factory", "houses", "military"],
+    "e_delay_after_buy_sec": 1.5,
+    "e_retries": 3,
+    "start_skip_notches": {
+      "factory": 18,
+      "houses": 8,
+      "military": 8
+    },
+    "start_skip_ref_height": 1009,
+    "scroll_read_pause": 0.06,
+    "scroll_after_found": 2,
+    "post_check_action": {
+      "type": "button",
+      "value": "country"
+    },
+    "return_settle_sec": 1.5
+  },
+  "ocr": {
+    "_comment": "English PP-OCRv5 model (en) — reads the game font best.",
+    "lang_type": "en",
+    "upscale": 2.0,
+    "min_confidence": 0.3,
+    "num_threads": "auto"
+  },
+  "buy": {
+    "_comment": "Auto-buy with the green in-shop money button. dry_run=true only logs what it WOULD buy (safe for testing). max_per_item=0 -> buy the whole stock. Edit items[] to choose what to buy.",
+    "enabled": true,
+    "dry_run": true,
+    "max_per_item": 0,
+    "items": {
+      "factory": [
+        "Blackhole Generator",
+        "Antimatter Reactor",
+        "Area 51 Lab",
+        "Quantum Core Generator"
+      ],
+      "houses": [
+        "The Manor"
+      ],
+      "military": [
+        "Rocket Bunker",
+        "Mech Station",
+        "Spider Base",
+        "Air Fortress"
+      ],
+      "special": []
+    },
+    "button_hsv_low": [40, 120, 180],
+    "button_hsv_high": [75, 255, 255],
+    "right_fraction": 0.58,
+    "max_pages": 6,
+    "click_delay_sec": 0.5
+  },
+  "report": {
+    "_comment": "items: a per-category whitelist the reader uses for an early-stop while scrolling (find these highest-value items faster).",
+    "items": {
+      "factory": [
+        "Uranium Cave",
+        "Nuclear Reactor",
+        "Data Center",
+        "Blackhole Generator",
+        "Antimatter Reactor",
+        "Area 51 Lab",
+        "Quantum Core Generator"
+      ],
+      "houses": [
+        "The Manor",
+        "Hotel",
+        "Giant Skyscraper",
+        "Double Turbo Tower",
+        "Grand Hotel"
+      ],
+      "military": [
+        "General's Base",
+        "Air Base",
+        "Artillery Depot",
+        "Rocket Bunker",
+        "Mech Station",
+        "Spider Base",
+        "Air Fortress"
+      ],
+      "special": []
+    }
+  },
+  "debug": {
+    "save_screenshots": false,
+    "dir": "debug"
+  },
+  "events": {
+    "_comment": "Full game-screen screenshot on each restock -> events folder. keep = how many newest to retain.",
+    "enabled": true,
+    "keep": 50,
+    "dir": "events"
+  },
+  "timed_screenshots": {
+    "_comment": "Screenshot the game screen every period_sec (and again extra_offset_sec later), from launch -> dir folder.",
+    "enabled": false,
+    "dir": "timed",
+    "period_sec": 270,
+    "extra_offset_sec": 30
+  },
+  "catalog": {
+    "factory": {
+      "Gold Cave": "Epic",
+      "Bank": "Epic",
+      "Research Labs": "Legendary",
+      "Diamond Cave": "Legendary",
+      "Uranium Cave": "Mythic",
+      "Nuclear Reactor": "Mythic",
+      "Data Center": "Mythic",
+      "Blackhole Generator": "Secret",
+      "Antimatter Reactor": "Secret",
+      "Area 51 Lab": "Secret",
+      "Quantum Core Generator": "Divine"
+    },
+    "houses": {
+      "Helix Tower": "Legendary",
+      "The Manor": "Mythic",
+      "Hotel": "Mythic",
+      "Giant Skyscraper": "Secret",
+      "Double Turbo Tower": "Secret",
+      "Grand Hotel": "Divine"
+    },
+    "military": {
+      "Missile Launcher": "Legendary",
+      "Military Hospital": "Legendary",
+      "General's Base": "Mythic",
+      "Air Base": "Mythic",
+      "Artillery Depot": "Mythic",
+      "Rocket Bunker": "Secret",
+      "Mech Station": "Secret",
+      "Spider Base": "Secret",
+      "Air Fortress": "Divine"
+    },
+    "special": {}
+  }
+}

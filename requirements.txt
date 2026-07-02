@@ -1,0 +1,22 @@
+# Roblox shop-watcher bot — Python 3.12, Windows
+# Install:  pip install -r requirements.txt
+
+# --- screen capture & image processing ---
+mss>=9.0.1
+numpy>=1.26
+opencv-python-headless>=4.9   # headless = no GUI/video codecs (not needed) -> lighter package
+Pillow>=10.0
+
+# --- Roblox window & input (mouse/keyboard) ---
+pywin32>=306
+
+# --- OCR (reads the shop item text) ---
+# RapidOCR on ONNX Runtime: light (no PyTorch), English model en/PP-OCRv5.
+# The model downloads automatically on first run (needs internet once).
+rapidocr>=2.0.0
+onnxruntime>=1.17
+rapidfuzz>=3.5
+
+# --- launcher GUI (optional — the bot runs fine with just `python run.py`) ---
+# WebView2-based window; the WebView2 runtime is preinstalled on Windows 11.
+pywebview>=5.0
