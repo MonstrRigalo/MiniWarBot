@@ -38,7 +38,7 @@ the game, read game memory, or modify any game files.
 
 - Windows 10 or Windows 11
 - Python 3.12
-- Roblox running in **Windowed** or **Borderless Windowed** mode
+- Roblox running in **Windowed** mode
 
 ---
 
