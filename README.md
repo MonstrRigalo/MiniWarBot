@@ -196,6 +196,7 @@ launcher.bat        Launcher shortcut
 # Notes
 
 - The only internet connection made by the bot is the one-time download of the OCR model on first launch.
+- The developers of MiniWar have confirmed that this bot can be used.
 
 ---
 
