@@ -42,7 +42,7 @@ the game, read game memory, or modify any game files.
 
 ---
 
-# Installation (For Beginners)
+# Installation (For Beginners, takes 3 min)
 
 ## 1. Install Python
 
@@ -128,14 +128,17 @@ All settings are saved automatically.
 
 # In-Game Settings (Important)
 
-Before running the bot, join **MiniWar** and open the **⚙️ Settings** menu in the top-right corner.
+Before running the bot:
+
+- Open Roblox in **Windowed** mode and maximize the game window.
+- Do **not** use Exclusive Fullscreen.
+- Join **MiniWar**.
+- Open the **⚙️ Settings** menu in the top-right corner.
 
 Recommended settings:
 
 - ✅ Enable **Low Performance**
 - ✅ Disable **Alliances**
-
-These settings reduce UI clutter and improve OCR accuracy.
 
 ---
 
