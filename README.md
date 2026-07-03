@@ -198,6 +198,10 @@ launcher.bat        Launcher shortcut
 - The only internet connection made by the bot is the one-time download of the OCR model on first launch.
 - The developers of MiniWar have confirmed that this bot can be used.
 
+# Disclaimer
+This software is provided "as is", for educational and research purposes only. The authors accept no responsibility or liability for how it is used. You are solely responsible for your own actions.
+We do not endorse or recommend using this software with Roblox or any other game. Automating a game may violate its Terms of Service and can result in penalties up to and including a permanent account ban. If you choose to use it, you do so entirely at your own risk.
+The authors are not liable for any misuse, for any damage, data loss, account suspension, or ban, or for any use of this software (copies, forks, etc.) for malicious or prohibited purposes. By downloading or running it, you accept full responsibility for the consequences.
 ---
 
 # License
